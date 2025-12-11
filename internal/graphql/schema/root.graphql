@@ -1,0 +1,14 @@
+type Query {
+  _version: String
+}
+
+type Mutation {
+  _version: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @public on FIELD_DEFINITION
