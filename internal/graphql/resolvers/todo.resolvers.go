@@ -23,16 +23,16 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input generated.Updat
 }
 
 // DeleteTodo is the resolver for the deleteTodo field.
-func (r *mutationResolver) DeleteTodo(ctx context.Context, id string) (bool, error) {
+func (r *mutationResolver) DeleteTodo(ctx context.Context, id int) (bool, error) {
 	panic(fmt.Errorf("not implemented: DeleteTodo - deleteTodo"))
 }
 
-// Todos is the resolver for the todos field.
-func (r *queryResolver) Todos(ctx context.Context, page *int, limit *int) (*generated.TodoResponse, error) {
-	panic(fmt.Errorf("not implemented: Todos - todos"))
+// GetTodos is the resolver for the getTodos field.
+func (r *queryResolver) GetTodos(ctx context.Context, input *generated.TodoQuery) (*generated.TodoResponse, error) {
+	panic(fmt.Errorf("not implemented: GetTodos - getTodos"))
 }
 
-// Todo is the resolver for the todo field.
-func (r *queryResolver) Todo(ctx context.Context, id string) (*generated.Todo, error) {
-	panic(fmt.Errorf("not implemented: Todo - todo"))
+// GetTodo is the resolver for the getTodo field.
+func (r *queryResolver) GetTodo(ctx context.Context, id int) (*generated.Todo, error) {
+	panic(fmt.Errorf("not implemented: GetTodo - getTodo"))
 }

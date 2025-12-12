@@ -6,11 +6,12 @@ enum TodoStatus {
 
 type Todo {
   id: ID!
-  title: String
-  description: String
+  primaryID: Int!
+  title: String!
+  description: String!
   Status: TodoStatus!
-  createdAt: String
-  updatedAt: String
+  createdAt: String!
+  updatedAt: String!
   completedAt: String
 }
 
@@ -20,7 +21,7 @@ input CreateTodoInput {
 }
 
 input UpdateTodoInput {
-  id: ID!
+  id: Int!
   title: String!
   description: String!
   status: String!
@@ -29,7 +30,7 @@ input UpdateTodoInput {
 extend type Mutation {
   createTodo(input: CreateTodoInput!): Todo!
   updateTodo(input: UpdateTodoInput!): Todo!
-  deleteTodo(id: ID!): Boolean!
+  deleteTodo(id: Int!): Boolean!
 }
 
 type TodoResponse {
@@ -39,7 +40,14 @@ type TodoResponse {
   limit: Int!
 }
 
+input TodoQuery {
+  page: Int = 1
+  limit: Int = 10
+  title: String
+  description: String
+}
+
 extend type Query {
-  todos(page: Int = 1, limit: Int = 10): TodoResponse
-  todo(id: ID!): Todo!
+  getTodos(input: TodoQuery): TodoResponse
+  getTodo(id: Int!): Todo!
 }
