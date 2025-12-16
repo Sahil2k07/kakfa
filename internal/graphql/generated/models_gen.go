@@ -9,9 +9,18 @@ import (
 	"strconv"
 )
 
+type AuthPayload struct {
+	Token string `json:"token"`
+	User  *User  `json:"user"`
+}
+
 type CreateTodoInput struct {
 	Title       string `json:"title"`
 	Description string `json:"description"`
+}
+
+type ForgotPasswordInput struct {
+	Email string `json:"email"`
 }
 
 type Mutation struct {
@@ -20,14 +29,40 @@ type Mutation struct {
 type Query struct {
 }
 
+type ResetPasswordInput struct {
+	OldPassword string `json:"oldPassword"`
+	NewPassword string `json:"newPassword"`
+}
+
+type SigninInput struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+type SignupInput struct {
+	Email     string `json:"email"`
+	UserName  string `json:"userName"`
+	Password  string `json:"password"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+}
+
 type Todo struct {
 	ID          string     `json:"id"`
-	Title       *string    `json:"title,omitempty"`
-	Description *string    `json:"description,omitempty"`
+	PrimaryID   int        `json:"primaryID"`
+	Title       string     `json:"title"`
+	Description string     `json:"description"`
 	Status      TodoStatus `json:"Status"`
-	CreatedAt   *string    `json:"createdAt,omitempty"`
-	UpdatedAt   *string    `json:"updatedAt,omitempty"`
+	CreatedAt   string     `json:"createdAt"`
+	UpdatedAt   string     `json:"updatedAt"`
 	CompletedAt *string    `json:"completedAt,omitempty"`
+}
+
+type TodoQuery struct {
+	Page        *int    `json:"page,omitempty"`
+	Limit       *int    `json:"limit,omitempty"`
+	Title       *string `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 type TodoResponse struct {
@@ -38,10 +73,23 @@ type TodoResponse struct {
 }
 
 type UpdateTodoInput struct {
-	ID          string `json:"id"`
+	ID          int    `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
 	Status      string `json:"status"`
+}
+
+type User struct {
+	ID        string  `json:"id"`
+	PrimaryID int     `json:"primaryID"`
+	Email     string  `json:"email"`
+	UserName  string  `json:"userName"`
+	CreatedAt string  `json:"createdAt"`
+	UpdatedAt string  `json:"updatedAt"`
+	FirstName string  `json:"firstName"`
+	LastName  string  `json:"lastName"`
+	Phone     *string `json:"phone,omitempty"`
+	Country   *string `json:"country,omitempty"`
 }
 
 type TodoStatus string

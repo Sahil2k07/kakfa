@@ -14,4 +14,8 @@ resolver:
   dir: internal/graphql/resolvers
   package: resolvers
 
+directives:
+  public:
+    skip_runtime: true
+
 autobind: []
