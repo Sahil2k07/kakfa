@@ -21,7 +21,8 @@ func HandleGraphQLError(ctx context.Context, err error) *gqlerror.Error {
 		return &gqlerror.Error{
 			Message: e.Msg,
 			Extensions: map[string]any{
-				"code": "NOT_FOUND",
+				"status": 400,
+				"code":   "NOT_FOUND",
 			},
 		}
 

@@ -8,6 +8,7 @@ require (
 	github.com/charmbracelet/log v0.4.2
 	github.com/labstack/echo/v4 v4.14.0
 	github.com/lestrrat-go/jwx/v2 v2.1.6
+	github.com/segmentio/kafka-go v0.4.49
 	github.com/vektah/gqlparser/v2 v2.5.31
 	golang.org/x/crypto v0.46.0
 	gorm.io/driver/postgres v1.6.0
@@ -35,6 +36,7 @@ require (
 	github.com/jackc/puddle/v2 v2.2.2 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/klauspost/compress v1.15.9 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/lestrrat-go/blackmagic v1.0.3 // indirect
 	github.com/lestrrat-go/httpcc v1.0.1 // indirect
@@ -46,6 +48,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.16 // indirect
 	github.com/muesli/termenv v0.16.0 // indirect
+	github.com/pierrec/lz4/v4 v4.1.15 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/sosodev/duration v1.3.1 // indirect

@@ -12,6 +12,7 @@ type appConfig struct {
 	Server   serverConfig   `toml:"server"`
 	JWT      jwtConfig      `toml:"jwt"`
 	Postgres postgresConfig `toml:"postgres"`
+	Kafka    kafkaConfig    `toml:"kafka"`
 }
 
 var (
@@ -29,6 +30,7 @@ func loadProdConfig() {
 		Postgres: loadPostgresConfig(),
 		JWT:      loadJwtConfig(),
 		Server:   loadServerConfig(),
+		Kafka:    loadKafkaConfig(),
 	}
 }
 

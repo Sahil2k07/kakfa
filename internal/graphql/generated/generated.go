@@ -42,7 +42,6 @@ type ResolverRoot interface {
 }
 
 type DirectiveRoot struct {
-	Public func(ctx context.Context, obj any, next graphql.Resolver) (res any, err error)
 }
 
 type ComplexityRoot struct {
@@ -924,20 +923,7 @@ func (ec *executionContext) _Mutation_signup(ctx context.Context, field graphql.
 			fc := graphql.GetFieldContext(ctx)
 			return ec.resolvers.Mutation().Signup(ctx, fc.Args["input"].(SignupInput))
 		},
-		func(ctx context.Context, next graphql.Resolver) graphql.Resolver {
-			directive0 := next
-
-			directive1 := func(ctx context.Context) (any, error) {
-				if ec.directives.Public == nil {
-					var zeroVal string
-					return zeroVal, errors.New("directive public is not implemented")
-				}
-				return ec.directives.Public(ctx, nil, directive0)
-			}
-
-			next = directive1
-			return next
-		},
+		nil,
 		ec.marshalNString2string,
 		true,
 		true,
@@ -978,20 +964,7 @@ func (ec *executionContext) _Mutation_signin(ctx context.Context, field graphql.
 			fc := graphql.GetFieldContext(ctx)
 			return ec.resolvers.Mutation().Signin(ctx, fc.Args["input"].(SigninInput))
 		},
-		func(ctx context.Context, next graphql.Resolver) graphql.Resolver {
-			directive0 := next
-
-			directive1 := func(ctx context.Context) (any, error) {
-				if ec.directives.Public == nil {
-					var zeroVal *AuthPayload
-					return zeroVal, errors.New("directive public is not implemented")
-				}
-				return ec.directives.Public(ctx, nil, directive0)
-			}
-
-			next = directive1
-			return next
-		},
+		nil,
 		ec.marshalNAuthPayload2ᚖgithubᚗcomᚋSahil2k07ᚋkakfaᚋinternalᚋgraphqlᚋgeneratedᚐAuthPayload,
 		true,
 		true,
@@ -1038,20 +1011,7 @@ func (ec *executionContext) _Mutation_forgotPassword(ctx context.Context, field 
 			fc := graphql.GetFieldContext(ctx)
 			return ec.resolvers.Mutation().ForgotPassword(ctx, fc.Args["input"].(ForgotPasswordInput))
 		},
-		func(ctx context.Context, next graphql.Resolver) graphql.Resolver {
-			directive0 := next
-
-			directive1 := func(ctx context.Context) (any, error) {
-				if ec.directives.Public == nil {
-					var zeroVal string
-					return zeroVal, errors.New("directive public is not implemented")
-				}
-				return ec.directives.Public(ctx, nil, directive0)
-			}
-
-			next = directive1
-			return next
-		},
+		nil,
 		ec.marshalNString2string,
 		true,
 		true,

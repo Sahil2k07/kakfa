@@ -17,8 +17,7 @@ type authService struct {
 	crypto interfaces.CryptoService
 }
 
-func AuthService(repo interfaces.AuthRepository) interfaces.AuthService {
-	crypto := CryptoService()
+func AuthService(repo interfaces.AuthRepository, crypto interfaces.CryptoService) interfaces.AuthService {
 	return &authService{
 		repo:   repo,
 		crypto: crypto,

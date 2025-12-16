@@ -2,26 +2,30 @@ package directives
 
 import (
 	"context"
-	"errors"
 
 	"github.com/99designs/gqlgen/graphql"
+	errz "github.com/Sahil2k07/kakfa/internal/errors"
 	"github.com/Sahil2k07/kakfa/internal/utils"
 )
 
-func AuthDirective() func(ctx context.Context, obj any, next graphql.Resolver) (any, error) {
-	return func(ctx context.Context, obj any, next graphql.Resolver) (any, error) {
+func AuthDirectiveMiddleware() graphql.FieldMiddleware {
+	return func(ctx context.Context, next graphql.Resolver) (any, error) {
+
 		fieldCtx := graphql.GetFieldContext(ctx)
+		if fieldCtx == nil {
+			return next(ctx)
+		}
+
+		if ctx.Value(utils.UserCtxKey) != nil {
+			return next(ctx)
+		}
+
 		for _, d := range fieldCtx.Field.Definition.Directives {
 			if d.Name == "public" {
-				return next(ctx)
+				return next(ctx) // allow public field
 			}
 		}
 
-		user := ctx.Value(utils.UserCtxKey)
-		if user == nil {
-			return nil, errors.New("unauthorized: missing or invalid token")
-		}
-
-		return next(ctx)
+		return nil, errz.NewUnauthorized("unauthorized: missing token")
 	}
 }

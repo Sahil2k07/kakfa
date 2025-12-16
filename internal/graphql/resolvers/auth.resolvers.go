@@ -10,26 +10,47 @@ import (
 	"fmt"
 
 	"github.com/Sahil2k07/kakfa/internal/graphql/generated"
+	"github.com/Sahil2k07/kakfa/internal/utils"
 )
 
 // Signup is the resolver for the signup field.
 func (r *mutationResolver) Signup(ctx context.Context, input generated.SignupInput) (string, error) {
-	panic(fmt.Errorf("not implemented: Signup - signup"))
+	res, err := r.AuthService.Signup(ctx, input)
+	if err != nil {
+		return "", utils.HandleGraphQLError(ctx, err)
+	}
+
+	return res, nil
 }
 
 // Signin is the resolver for the signin field.
 func (r *mutationResolver) Signin(ctx context.Context, input generated.SigninInput) (*generated.AuthPayload, error) {
-	panic(fmt.Errorf("not implemented: Signin - signin"))
+	res, err := r.AuthService.Signin(ctx, input)
+	if err != nil {
+		return &generated.AuthPayload{}, utils.HandleGraphQLError(ctx, err)
+	}
+
+	return res, nil
 }
 
 // ForgotPassword is the resolver for the forgotPassword field.
 func (r *mutationResolver) ForgotPassword(ctx context.Context, input generated.ForgotPasswordInput) (string, error) {
-	panic(fmt.Errorf("not implemented: ForgotPassword - forgotPassword"))
+	res, err := r.AuthService.ForgotPassword(ctx, input)
+	if err != nil {
+		return "", utils.HandleGraphQLError(ctx, err)
+	}
+
+	return res, nil
 }
 
 // ResetPassword is the resolver for the resetPassword field.
 func (r *mutationResolver) ResetPassword(ctx context.Context, input generated.ResetPasswordInput) (string, error) {
-	panic(fmt.Errorf("not implemented: ResetPassword - resetPassword"))
+	res, err := r.AuthService.ResetPassword(ctx, input)
+	if err != nil {
+		return "", utils.HandleGraphQLError(ctx, err)
+	}
+
+	return res, nil
 }
 
 // Me is the resolver for the me field.
